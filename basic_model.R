@@ -14,7 +14,7 @@ secondary_cases <- function(r=1.2, # reproduction number
                             q=1, # probability cluster identified
                             p=0.5, # probability contact traced
                             c1=0.5, # scaled reduction from tracing index case
-                            c2=0.5, # scaled proportional reduction from tracing cluster case
+                            c2=0.5, # scaled proportional reduction from tracing contact of cluster case
                             d=0.5 # probability detection of cases
                            ){
   
