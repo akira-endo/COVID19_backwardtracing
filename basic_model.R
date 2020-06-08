@@ -19,10 +19,10 @@ secondary_cases <- function(r=1.2, # reproduction number
                            ){
   
   # No tracing
-  baseline_secondary <- r^3
+  baseline_secondary <- r^3*(1+1/k)
   
   # Cases with forward tracing
-  forward_secondary <- (r*d)*(r)*(r*p*c1) + (r^3*(1-d))
+  forward_secondary <- (r*d)*(r)*(r*p*c1) + (r^3*(1-d))*(1+1/k)
 
   # Forward + backward tracing
   backward_secondary <- forward_secondary + (r*(1-d)*q)*(r)*(r*p*c2)*(1+1/k)
