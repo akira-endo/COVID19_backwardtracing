@@ -13,21 +13,21 @@ secondary_cases <- function(r=1.2, # reproduction number
                             k=0.3, # dispersion
                             q=1, # probability cluster identified
                             p=0.5, # probability contact traced
-                            c1=0.5, # scaled reduction from tracing index case
-                            c2=0.5, # scaled proportional reduction from tracing contact of cluster case
+                            c1=0.5, # proportional reduction from tracing index case
+                            c2=0.5, # proportional reduction from tracing contact of cluster 
                             d=0.5 # probability detection of cases
                            ){
   
   # No tracing
   baseline_secondary <- r^3*(1+1/k)
   
-  # Cases with forward tracing
-  forward_secondary <- (r*d)*(r)*(r*p*c1) + (r^3*(1-d))*(1+1/k)
+  # Cases averted with forward tracing
+  forward_secondary <- (r*d)*(r)*(r*p*c1) 
 
-  # Forward + backward tracing
+  # Cases averted with forward + backward tracing
   backward_secondary <- (r*d)*(r)*(r*p*c1) + (r*(1-d)*q)*(r)*(r*p*c2)*(1+1/k)
 
-  c(base=baseline_secondary,forward=forward_secondary,forward_back=backward_secondary)
+  c(base=baseline_secondary,forward_avert=forward_secondary,forward_back_avert=backward_secondary)
 
 }
 
