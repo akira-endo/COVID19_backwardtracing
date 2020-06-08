@@ -39,7 +39,6 @@ secondary_cases()
 kk <- seq(0.1,0.5,0.1)
 
 par(mfrow=c(1,1),mar=c(3,3,1,1),mgp=c(2,0.6,0),las=0)
-plot(data_infections,col="black",lwd=2,yaxs="i",ylab="number",xlab="days",ylim=c(0,1200))
-points(data_deaths,col="red",lwd=2)
-#lines(estimated_cases,col="blue",lwd=2)
-#lines(estimated_cases2,col="purple",lwd=2)
+
+plot(NA,col="black",lwd=2,yaxs="i",ylab="number",xlab="days",ylim=c(0,1))
+
