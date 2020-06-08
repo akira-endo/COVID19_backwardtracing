@@ -22,10 +22,10 @@ secondary_cases <- function(r=1.2, # reproduction number
   baseline_secondary <- r^3*(1+1/k)
   
   # Cases averted with forward tracing
-  forward_secondary <- (r*d)*(r)*(r*p*c1) 
+  forward_secondary <- (r*d)*(r)*(r*p*c1)*(1+1/k)
 
   # Cases averted with forward + backward tracing
-  backward_secondary <- (r*d)*(r)*(r*p*c1) + (r*(1-d)*q)*(r)*(r*p*c2)*(1+1/k)
+  backward_secondary <- (r*d)*(r)*(r*p*c1)*(1+1/k) + (r*(1-d)*q)*(r)*(r*p*c2)*(1+1/k)
 
   c(base=baseline_secondary,forward_avert=forward_secondary,forward_back_avert=backward_secondary)
 
