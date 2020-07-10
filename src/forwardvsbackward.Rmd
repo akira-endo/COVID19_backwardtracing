@@ -14,37 +14,35 @@ jupyter:
 ---
 
 # Forward vs. backward contact tracing
+Figures show the estimated effectiveness of forward and backward contact tracing. Left panels (A, D, G): the effectiveness (the proportion of generation 3 cases averted) of forward tracing alone; middle panels (B, E, H): the effectiveness of a combination of forward and backward tracing; right panels (C, F, I): additional effectiveness by combining backward tracing with forward tracing. Colours represent the relative reduction in infectiousness of generation 3 cases if traced and put in quarantine.
 
 ```{r}
-source("basic_model.R") # load functions
+source("basic_funcs.R") # load functions
+#options(jupyter.plot_mimetypes = "image/svg+xml")
 ```
 
 ```{r}
-R=1.2
-k=0.3
-q=1
-d=0.2
+par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
+
+tertiary<-plotbypc(R=1.2,k=0.2,q=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=1.2,k=0.2,q=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=1.2,k=0.5,q=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
 ```
 
 ```{r}
-par(mfrow=c(2,3),mar=c(3,3,1,1),mgp=c(2,0.6,0),las=0,yaxs="i")
-print("R=1.2")
-tertiary<-plotbypc(R=1.2,k,q,d=0.1)
-tertiary<-plotbypc(R=1.2,k,q,d=0.5)
+par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
+
+tertiary<-plotbypc(R=2.5,k=0.2,q=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=2.5,k=0.2,q=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=2.5,k=0.5,q=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
 ```
 
 ```{r}
-par(mfrow=c(2,3),mar=c(3,3,1,1),mgp=c(2,0.6,0),las=0,yaxs="i")
-print("R=2.5")
-tertiary<-plotbypc(R=2.5,k,q,d=0.1)
-tertiary<-plotbypc(R=2.5,k,q,d=0.5)
-```
+par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-```{r}
-par(mfrow=c(2,3),mar=c(3,3,1,1),mgp=c(2,0.6,0),las=0,yaxs="i")
-print("R=1.2; k=0.1")
-tertiary<-plotbypc(R=1.2,k=0.1,q,d=0.1)
-tertiary<-plotbypc(R=1.2,k=0.1,q,d=0.5)
+tertiary<-plotbypc(R=1.2,k=0.2,q=0.8,d=0.5, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=1.2,k=0.2,q=0.5,d=0.5, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=1.2,k=0.5,q=0.8,d=0.5, panel=c("(G)","(H)","(I)"))
 ```
 
 ```{r}
