@@ -14,35 +14,76 @@ jupyter:
 ---
 
 # Forward vs. backward contact tracing
-Figures show the estimated effectiveness of forward and backward contact tracing. Left panels (A, D, G): the effectiveness (the proportion of generation 3 cases averted) of forward tracing alone; middle panels (B, E, H): the effectiveness of a combination of forward and backward tracing; right panels (C, F, I): additional effectiveness by combining backward tracing with forward tracing. Colours represent the relative reduction in infectiousness of generation 3 cases if traced and put in quarantine.
+## Methods
+We computed the effectiveness of contact tracing as the proportion of generation 3 cases averted. Assuming a negative-binomial branching process with a mean $R$ and overdispersion paramter $k$, The mean total number of generation 3 cases given an index case found by surveillance is $m=R^2(1+R(1+\frac1k))$.
+### Forward tracing
+The expected number of generation 1 cases excluding the initially found index case is $R(1+\frac{1}{k})$, of which proportion $d$ is independently detected by symptom-based surveillance. Therefore, the total number of generation 1 cases targeted by forward tracing is $1+Rd(1+\frac{1}{k})$. Each of them would result in $R^2$ generation 3 cases on average if not traced, however, proportion $qc$ are averted by contact tracing (success rate $q$) and quarantine (relative reduction $c$ in infectiousness). The number of generation 3 cases averted is thus given as
+$$\Delta_F=R^2qc(1+Rd(1+\frac{1}{k})).$$
+### Backward tracing
+We assume that backward contact tracing successfully identifies the primary case at probability $b$. Of the mean $R(1+\frac{1}{k})$ generation 1 cases which is potentially under the scope of backward tracing, mean proportion $(1-d)(1-bq)$ will remain undetected either by backward tracing or independent detection. The total number of generation 1 cases detected is $1+(1-(1-d)(1-bq))R(1+\frac{1}{k})$, which gives the number of generation 3 cases averted as
+$$\Delta_{F+B}=R^2qc(1+(1-(1-d)(1-bq))R(1+\frac{1}{k})).$$
+
+We computed the effectiveness of tracing as $\frac{\Delta_F}{m}$ and $\frac{\Delta_{F+B}}{m}$.
 
 ```{r}
 source("basic_funcs.R") # load functions
 #options(jupyter.plot_mimetypes = "image/svg+xml")
 ```
 
+## Main and supplementary figures: the effectiveness of forward and backward contact tracing
+Figures show the estimated effectiveness of forward and backward contact tracing. Left panels (A, D, G): the effectiveness (the proportion of generation 3 cases averted) of forward tracing alone; middle panels (B, E, H): the effectiveness of a combination of forward and backward tracing; right panels (C, F, I): additional effectiveness by combining backward tracing with forward tracing. Colours represent the relative reduction in infectiousness of generation 3 cases if traced and put in quarantine.
+
+### Figure 2 (main text). The estimated effectiveness with $R = 1.2$.
+
 ```{r}
 par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-tertiary<-plotbypc(R=1.2,k=0.2,q=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
-tertiary<-plotbypc(R=1.2,k=0.2,q=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
-tertiary<-plotbypc(R=1.2,k=0.5,q=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
+tertiary<-plotbypc(R=1.2,k=0.2,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=1.2,k=0.2,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=1.2,k=0.5,b=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
 ```
 
+### Figure S1. The estimated effectiveness with $R = 2.5$.
+
 ```{r}
 par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-tertiary<-plotbypc(R=2.5,k=0.2,q=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
-tertiary<-plotbypc(R=2.5,k=0.2,q=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
-tertiary<-plotbypc(R=2.5,k=0.5,q=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
+tertiary<-plotbypc(R=2.5,k=0.2,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=2.5,k=0.2,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=2.5,k=0.5,b=0.8,d=0.2, panel=c("(G)","(H)","(I)"))
 ```
 
+### Figure S2. The estimated effectiveness with $R = 1.2$ and $d=0.5$.
+
 ```{r}
 par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-tertiary<-plotbypc(R=1.2,k=0.2,q=0.8,d=0.5, panel=c("(A)","(B)","(C)"))
-tertiary<-plotbypc(R=1.2,k=0.2,q=0.5,d=0.5, panel=c("(D)","(E)","(F)"))
-tertiary<-plotbypc(R=1.2,k=0.5,q=0.8,d=0.5, panel=c("(G)","(H)","(I)"))
+tertiary<-plotbypc(R=1.2,k=0.2,b=0.8,d=0.1, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbypc(R=1.2,k=0.2,b=0.5,d=0.1, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbypc(R=1.2,k=0.5,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
+```
+
+## Supplementary figures: the absolute number of cases averted by backward tracing
+Figures show the estimated number of generation 3 cases averted by forward and backward contact tracing. Left panels (A, D, G): the number of cases averted by forward tracing alone; middle panels (B, E, H): the number of cases averted by a combination of forward and backward tracing; right panels (C, F, I): additional cases averted by combining backward tracing with forward tracing. Colours represent the assumed reproduction number ($R$).
+
+### Figure S3. The number of generation 3 cases averted with 80% success rate of tracing and 80% relative reduction in transmission during quarantine.
+
+```{r}
+par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
+
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
+```
+
+### Figure S4. The number of generation 3 cases averted with 60% success rate of tracing and 60% relative reduction in transmission during quarantine.
+
+```{r}
+par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
+
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
 ```
 
 ```{r}
