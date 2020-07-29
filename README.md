@@ -22,7 +22,7 @@ R functions used in the analysis
 [Akira Endo](https://github.com/akira-endo), 
 [Quentin Leclerc](https://github.com/qleclerc), 
 [Gwen Knight](https://github.com/gwenknight), 
-Graham Medley,
+[Graham Medley](https://github.com/grahammedley),
 [Katie Atkins](https://github.com/katiito), 
 [Sebastian Funk](https://github.com/sbfnk),
 [Adam Kucharski](https://github.com/adamkucharski)
