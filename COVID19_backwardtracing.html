@@ -13077,12 +13077,12 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Forward-vs.-backward-contact-tracing">Forward vs. backward contact tracing<a class="anchor-link" href="#Forward-vs.-backward-contact-tracing">&#182;</a></h1><h2 id="Methods">Methods<a class="anchor-link" href="#Methods">&#182;</a></h2><p>We computed the effectiveness of contact tracing as the proportion of generation 3 cases averted. Assuming a negative-binomial branching process with a mean $R$ and overdispersion paramter $k$, The mean total number of generation 3 cases given an index case found by surveillance is $m=R^2(1+R(1+\frac1k))$.</p>
+<h1 id="Supplementary-materials:-Implication-of-backward-contact-tracing-in-the-presence-of-overdispersed-transmission-in-COVID-19-outbreak">Supplementary materials: Implication of backward contact tracing in the presence of overdispersed transmission in COVID-19 outbreak<a class="anchor-link" href="#Supplementary-materials:-Implication-of-backward-contact-tracing-in-the-presence-of-overdispersed-transmission-in-COVID-19-outbreak">&#182;</a></h1><h2 id="Methods">Methods<a class="anchor-link" href="#Methods">&#182;</a></h2><p>We computed the effectiveness of contact tracing as the proportion of generation 3 cases averted. Assuming a negative-binomial branching process with a mean $R$ and overdispersion paramter $k$, The mean total number of generation 3 cases given an index case found by surveillance is $C_3=R^2(1+R(1+\frac1k))$.</p>
 <h3 id="Forward-tracing">Forward tracing<a class="anchor-link" href="#Forward-tracing">&#182;</a></h3><p>The expected number of generation 1 cases excluding the initially found index case is $R(1+\frac{1}{k})$, of which proportion $d$ is independently detected by symptom-based surveillance. Therefore, the total number of generation 1 cases targeted by forward tracing is $1+Rd(1+\frac{1}{k})$. Each of them would result in $R^2$ generation 3 cases on average if not traced, however, proportion $qc$ are averted by contact tracing (success rate $q$) and quarantine (relative reduction $c$ in infectiousness). The number of generation 3 cases averted is thus given as
 $$\Delta_F=R^2qc(1+Rd(1+\frac{1}{k})).$$</p>
 <h3 id="Backward-tracing">Backward tracing<a class="anchor-link" href="#Backward-tracing">&#182;</a></h3><p>We assume that backward contact tracing successfully identifies the primary case at probability $b$. Of the mean $R(1+\frac{1}{k})$ generation 1 cases which is potentially under the scope of backward tracing, mean proportion $(1-d)(1-bq)$ will remain undetected either by backward tracing or independent detection. The total number of generation 1 cases detected is $1+(1-(1-d)(1-bq))R(1+\frac{1}{k})$, which gives the number of generation 3 cases averted as
 $$\Delta_{F+B}=R^2qc(1+(1-(1-d)(1-bq))R(1+\frac{1}{k})).$$</p>
-<p>We computed the effectiveness of tracing as $\frac{\Delta_F}{m}$ and $\frac{\Delta_{F+B}}{m}$.</p>
+<p>We computed the effectiveness of tracing as $\frac{\Delta_F}{C_3}$ and $\frac{\Delta_{F+B}}{C_3}$.</p>
 
 </div>
 </div>
@@ -13104,7 +13104,7 @@ $$\Delta_{F+B}=R^2qc(1+(1-(1-d)(1-bq))R(1+\frac{1}{k})).$$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Main-and-supplementary-figures:-the-effectiveness-of-forward-and-backward-contact-tracing">Main and supplementary figures: the effectiveness of forward and backward contact tracing<a class="anchor-link" href="#Main-and-supplementary-figures:-the-effectiveness-of-forward-and-backward-contact-tracing">&#182;</a></h2><p>Figures show the estimated effectiveness of forward and backward contact tracing. Left panels (A, D, G): the effectiveness (the proportion of generation 3 cases averted) of forward tracing alone; middle panels (B, E, H): the effectiveness of a combination of forward and backward tracing; right panels (C, F, I): additional effectiveness by combining backward tracing with forward tracing. Colours represent the relative reduction in infectiousness of generation 3 cases if traced and put in quarantine.</p>
+<h2 id="The-effectiveness-of-forward-and-backward-contact-tracing">The effectiveness of forward and backward contact tracing<a class="anchor-link" href="#The-effectiveness-of-forward-and-backward-contact-tracing">&#182;</a></h2><p>Figures show the estimated effectiveness of forward and backward contact tracing. Left panels (A, D, G): the effectiveness (the proportion of generation 3 cases averted) of forward tracing alone; middle panels (B, E, H): the effectiveness of a combination of forward and backward tracing; right panels (C, F, I): additional effectiveness by combining backward tracing with forward tracing. Colours represent the relative reduction in infectiousness of generation 3 cases if traced and put in quarantine.</p>
 <h3 id="Figure-2-(main-text).-The-estimated-effectiveness-with-$R-=-1.2$.">Figure 2 (main text). The estimated effectiveness with $R = 1.2$.<a class="anchor-link" href="#Figure-2-(main-text).-The-estimated-effectiveness-with-$R-=-1.2$.">&#182;</a></h3>
 </div>
 </div>
@@ -14486,8 +14486,9 @@ oEZSlAyokRQlA2okRcmAGklRMqBGUpQM/B9vKHmOieqIygAAAABJRU5ErkJggg=="
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Supplementary-figures:-the-absolute-number-of-cases-averted-by-backward-tracing">Supplementary figures: the absolute number of cases averted by backward tracing<a class="anchor-link" href="#Supplementary-figures:-the-absolute-number-of-cases-averted-by-backward-tracing">&#182;</a></h2><p>Figures show the estimated number of generation 3 cases averted by forward and backward contact tracing. Left panels (A, D, G): the number of cases averted by forward tracing alone; middle panels (B, E, H): the number of cases averted by a combination of forward and backward tracing; right panels (C, F, I): additional cases averted by combining backward tracing with forward tracing. Colours represent the assumed reproduction number ($R$).</p>
-<h3 id="Figure-S3.-The-number-of-generation-3-cases-averted-with-80%-success-rate-of-tracing-and-80%-relative-reduction-in-transmission-during-quarantine.">Figure S3. The number of generation 3 cases averted with 80% success rate of tracing and 80% relative reduction in transmission during quarantine.<a class="anchor-link" href="#Figure-S3.-The-number-of-generation-3-cases-averted-with-80%-success-rate-of-tracing-and-80%-relative-reduction-in-transmission-during-quarantine.">&#182;</a></h3>
+<p>The absolute number of cases averted by backward tracing
+Figures show the estimated number of generation 3 cases averted by forward and backward contact tracing. Left panels (A, D, G): the number of cases averted by forward tracing alone; middle panels (B, E, H): the number of cases averted by a combination of forward and backward tracing; right panels (C, F, I): additional cases averted by combining backward tracing with forward tracing. Colours represent the assumed reproduction number ($R$).</p>
+<h3 id="Figure-3-(main-text).-The-number-of-generation-3-cases-averted-with-80%-success-rate-of-tracing-and-80%-relative-reduction-in-transmission-during-quarantine.">Figure 3 (main text). The number of generation 3 cases averted with 80% success rate of tracing and 80% relative reduction in transmission during quarantine.<a class="anchor-link" href="#Figure-3-(main-text).-The-number-of-generation-3-cases-averted-with-80%-success-rate-of-tracing-and-80%-relative-reduction-in-transmission-during-quarantine.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14893,7 +14894,7 @@ ySQgA8lkEpCBZDIJyEAymQRkIJlMAjKQTCYBGUgmk4D+D8GDj4JJk/oIAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Figure-S4.-The-number-of-generation-3-cases-averted-with-60%-success-rate-of-tracing-and-60%-relative-reduction-in-transmission-during-quarantine.">Figure S4. The number of generation 3 cases averted with 60% success rate of tracing and 60% relative reduction in transmission during quarantine.<a class="anchor-link" href="#Figure-S4.-The-number-of-generation-3-cases-averted-with-60%-success-rate-of-tracing-and-60%-relative-reduction-in-transmission-during-quarantine.">&#182;</a></h3>
+<h3 id="Figure-S3.-The-number-of-generation-3-cases-averted-with-60%-success-rate-of-tracing-and-60%-relative-reduction-in-transmission-during-quarantine.">Figure S3. The number of generation 3 cases averted with 60% success rate of tracing and 60% relative reduction in transmission during quarantine.<a class="anchor-link" href="#Figure-S3.-The-number-of-generation-3-cases-averted-with-60%-success-rate-of-tracing-and-60%-relative-reduction-in-transmission-during-quarantine.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15293,19 +15294,6 @@ A8lkEpCBZDIJyEAymQT0Pw4sn0IRnsOdAAAAAElFTkSuQmCC"
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
