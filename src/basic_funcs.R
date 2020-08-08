@@ -55,25 +55,25 @@ plotbypc <- function(R=1.2, k=0.3, b=1, d = 0.5, qs=seq(0.0,1,0.1), cs=seq(0.2,1
     return(tertiary)
 }
 
-plotbyRk <- function(Rs = c(1.2, 1.5, 2, 2.5), ks=seq(0.1,0.5,0.1), b = 1, d= 0.5, q = 0.8, c = 0.8, noplot = F, panel = rep("",3)){
+plotbyRk <- function(Rs = c(1.2, 1.5, 2, 2.5), ks=seq(0.1,0.5,0.1), b = 1, d= 0.5, q = 0.8, c = 0.8, noplot = F, panel = rep("",3), ylim=NULL){
     ksmat <- matrix(ks,length(ks),length(Rs))
     Rsmat <- matrix(Rs,length(ks),length(Rs),byrow=T)
     tertiary <- tertiary_cases(Rsmat,ksmat,b,q,c,c,d)
     if(noplot){return(tertiary)} # skip plotting
     ymax=max(tertiary$fwd_back_avert)#max(tertiary$base)
-    
+    if(is.null(ylim))ylim=c(0,ymax*1.02)
     cols1=topo.colors(length(Rs)+10)[c(1,3+1:(length(Rs)-1))]
     cols2=topo.colors(length(Rs)+10)[c(1,3+1:(length(Rs)-1))]
     cols3=topo.colors(length(Rs)+10)[c(1,3+1:(length(Rs)-1))]
     
     pars = paste0(" q = ",q,", c = ",c,", b = ",format(b,nsmall=1),", d = ",d,paste0(rep(" ",10),collapse=""))
-     matplot(tertiary$forward_avert,x=ks,type="o",pch=19,lty=1,col=rev(cols1),lwd=2,ylab="cases averted (forward)",xlab="overdispersion parameter (k)",ylim=c(0,ymax*1.02),main=c(pars,paste(c(panel[1],rep(" ",45)),collapse="")))
+     matplot(tertiary$forward_avert,x=ks,type="o",pch=19,lty=1,col=rev(cols1),lwd=2,ylab="cases averted (forward)",xlab="overdispersion parameter (k)",ylim=ylim,main=c(pars,paste(c(panel[1],rep(" ",45)),collapse="")))
     legend("topright",legend=rev(paste(c(character(length(Rs)-1),"R ="),format(Rs,nsmall=1))),pch=19,col=(cols1),bty="n")
     #abline(h=tertiary$base,lwd=2,lty=2)
-    matplot(tertiary$fwd_back_avert,x=ks,type="o",pch=19,lty=1,col=rev(cols2),lwd=2,ylab="cases averted (forward + backward)",xlab="overdispersion parameter (k)",ylim=c(0,ymax*1.02),main=c("",paste(c(panel[2],rep(" ",45)),collapse="")))
+    matplot(tertiary$fwd_back_avert,x=ks,type="o",pch=19,lty=1,col=rev(cols2),lwd=2,ylab="cases averted (forward + backward)",xlab="overdispersion parameter (k)",ylim=ylim,main=c("",paste(c(panel[2],rep(" ",45)),collapse="")))
     legend("topright",legend=rev(paste(c(character(length(Rs)-1),"R ="),format(Rs,nsmall=1))),pch=19,col=(cols2),bty="n")
     #abline(h=tertiary$base,lwd=2,lty=2)
-    matplot(tertiary$backward_gain,x=ks,type="o",pch=19,lty=1,col=rev(cols3),lwd=2,ylab="increment with backward tracing",xlab="overdispersion parameter (k)",ylim=c(0,ymax*1.02),main=c("", paste(c(panel[3],rep(" ",45)),collapse="")))
+    matplot(tertiary$backward_gain,x=ks,type="o",pch=19,lty=1,col=rev(cols3),lwd=2,ylab="increment with backward tracing",xlab="overdispersion parameter (k)",ylim=ylim,main=c("", paste(c(panel[3],rep(" ",45)),collapse="")))
     legend("topright",legend=rev(paste(c(character(length(Rs)-1),"R ="),format(Rs,nsmall=1))),pch=19,col=(cols2),bty="n")
     #abline(h=tertiary$base,lwd=2,lty=2)
     return(tertiary)

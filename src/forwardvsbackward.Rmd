@@ -63,17 +63,17 @@ tertiary<-plotbypc(R=1.2,k=0.2,b=0.5,d=0.1, panel=c("(D)","(E)","(F)"))
 tertiary<-plotbypc(R=1.2,k=0.5,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
 ```
 
-The absolute number of cases averted by backward tracing
-Figures show the estimated number of generation 3 cases averted by forward and backward contact tracing. Left panels (A, D, G): the number of cases averted by forward tracing alone; middle panels (B, E, H): the number of cases averted by a combination of forward and backward tracing; right panels (C, F, I): additional cases averted by combining backward tracing with forward tracing. Colours represent the assumed reproduction number ($R$).
+## The absolute number of cases averted by backward tracing
+Figures show the estimated number of generation-3 cases averted by forward and backward contact tracing. Left panels (A, D, G): the number of cases averted by forward tracing alone; middle panels (B, E, H): the number of cases averted by a combination of forward and backward tracing; right panels (C, F, I): additional cases averted by combining backward tracing with forward tracing. Colours represent the assumed reproduction number ($R$).
 
 ### Figure 3 (main text). The number of generation 3 cases averted with 80% success rate of tracing and 80% relative reduction in transmission during quarantine.
 
 ```{r}
 par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
-tertiary<-plotbyRk(q=0.8,c=0.8,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
-tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"), ylim=c(0,100))
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"), ylim=c(0,100))
+tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"), ylim=c(0,100))
 ```
 
 ### Figure S3. The number of generation 3 cases averted with 60% success rate of tracing and 60% relative reduction in transmission during quarantine.
@@ -81,7 +81,7 @@ tertiary<-plotbyRk(q=0.8,c=0.8,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
 ```{r}
 par(mfrow=c(3,3),mar=c(4,3,2.5,1),mgp=c(2,0.6,0),las=0,yaxs="i")
 
-tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"))
-tertiary<-plotbyRk(q=0.6,c=0.6,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"))
-tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"))
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.2, panel=c("(A)","(B)","(C)"), ylim=c(0,50))
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.5,d=0.2, panel=c("(D)","(E)","(F)"), ylim=c(0,50))
+tertiary<-plotbyRk(q=0.6,c=0.6,b=0.8,d=0.1, panel=c("(G)","(H)","(I)"), ylim=c(0,50))
 ```
